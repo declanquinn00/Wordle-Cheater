@@ -11,9 +11,16 @@ def wcheck(word, list):
             for item in list:
                 if item[i] == letter:
                     tmplist.append(item)
-        list = tmplist
+            list = tmplist
     return list
 
+def lcheck(l, list):
+    newlist = []
+    for i in l:
+        for word in list:
+            if(l in word):
+                newlist.append(word)
+    return newlist
 
 
 def main():
@@ -31,6 +38,10 @@ def main():
         if(size ==0):
             print('There are no matching words')
         else:
+            letters = split(input('Enter any known letters'))
+            for l in letters:
+                result = lcheck(l, result)
+            size = len(result)
             print('There are ' + str(size) + ' possible words it could be')
             print(result)
 
